@@ -1,0 +1,34 @@
+.scoreTable {
+  table-layout: fixed;
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  border: 1px solid black
+}
+
+.scoreTable th, .scoreTable td {
+  font-size: 24px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.scoreTable__totalColumn {
+  width: 20%;
+}
+
+.scoreTable__colorColumn--red {
+  background-color: red;
+}
+
+.scoreTable__colorColumn--yellow {
+  background-color: yellow;
+}
+
+.scoreTable__colorColumn--green {
+  background-color: green;
+}
+
+.scoreTable__colorColumn--blue {
+  background-color: blue;
+}

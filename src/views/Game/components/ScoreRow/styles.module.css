@@ -1,0 +1,27 @@
+.scoreRow {
+  /* border-radius: 7px; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 7px;
+}
+
+/* red */
+.scoreRow--red {
+  background-color: red;
+}
+
+/* yellow */
+.scoreRow--yellow {
+  background-color: gold;
+}
+
+/* green */
+.scoreRow--green {
+  background-color: green;
+}
+
+/* blue */
+.scoreRow--blue {
+  background-color: blue;
+}

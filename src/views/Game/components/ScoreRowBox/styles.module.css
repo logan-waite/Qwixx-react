@@ -1,0 +1,57 @@
+.scoreRow__box {
+  box-sizing: border-box;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20pt;
+  margin: 2px;
+  border-radius: 5px;
+  position: relative;
+  border: none;
+}
+
+.scoreRow__box:disabled {
+  cursor:default;
+}
+.scoreRow__box:hover:not(:disabled) {
+  border: 2px solid white;
+  box-shadow: 0px 0px 1px 2px gray;
+}
+
+.scoreRow__box--attention {
+  position: absolute;
+  font-size: 10pt;
+}
+
+.scoreRow__box--scored {
+  color: black;
+  position: absolute;
+  opacity: 0.5;
+  font-size: 24pt;
+}
+
+.scoreRow__box--selected {
+  color: black;
+  position: absolute;
+  opacity: 0.25;
+  font-size: 24pt;
+}
+
+.scoreRow__box--red {
+  color: red;
+  background-color: lightpink;
+}
+.scoreRow__box--yellow {
+  color: gold;
+  background-color: lightyellow;
+}
+.scoreRow__box--green {
+  color: green;
+  background-color: lightgreen;
+}
+.scoreRow__box--blue {
+  color: blue;
+  background-color: lightblue;
+}
