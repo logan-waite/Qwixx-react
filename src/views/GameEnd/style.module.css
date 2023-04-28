@@ -17,18 +17,38 @@
   width: 20%;
 }
 
+.scoreTable__colorColumn {
+  color: black;
+}
+
 .scoreTable__colorColumn--red {
-  background-color: red;
+  background-color: var(--light-red);
 }
 
 .scoreTable__colorColumn--yellow {
-  background-color: yellow;
+  background-color: var(--light-yellow);
 }
 
 .scoreTable__colorColumn--green {
-  background-color: green;
+  background-color: var(--light-green);
 }
 
 .scoreTable__colorColumn--blue {
-  background-color: blue;
+  background-color: var(--light-blue);
+}
+
+.scoreTable__colorColumn__header--red {
+  background-color: var(--red);
+}
+
+.scoreTable__colorColumn__header--yellow {
+  background-color: var(--yellow);
+}
+
+.scoreTable__colorColumn__header--green {
+  background-color: var(--green);
+}
+
+.scoreTable__colorColumn__header--blue {
+  background-color: var(--blue);
 }

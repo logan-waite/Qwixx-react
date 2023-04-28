@@ -94,16 +94,26 @@ export default function ScoreRow({
     onSelect(selectingFor, selection);
   }
 
+  const rowLocked = game.diceRoll
+    .filter((d) => d.locked)
+    .map((d) => d.color)
+    .includes(color);
+
   return (
     <div className={`${styles.scoreRow} ${styles[`scoreRow--${color}`]}`}>
       {boxes.map((boxNumber, i) => {
         const isLockNumber = i + 1 === boxes.length; // The last box
         const numberIsFree = isLockNumber ? markedBoxes >= 5 : true;
+
         const validWhiteOption =
-          game.diceRolled && boxNumber === whiteValue && numberIsFree;
+          game.diceRolled &&
+          !rowLocked &&
+          boxNumber === whiteValue &&
+          numberIsFree;
         const validColorOption =
           isMyTurn &&
           game.diceRolled &&
+          !rowLocked &&
           (boxNumber === colorValue1 || boxNumber === colorValue2) &&
           numberIsFree;
 

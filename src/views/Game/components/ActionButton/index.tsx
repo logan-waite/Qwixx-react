@@ -1,6 +1,7 @@
 import useGame from "@/lib/hooks/useGame";
 import styles from "./styles.module.css";
 import usePlayer from "@/lib/hooks/usePlayer";
+import DefaultButton from "@/components/DefaultButton";
 
 type ActionButtonPropTypes = {
   isMyTurn: boolean;
@@ -20,7 +21,7 @@ export default function ActionButton({
       await rollDice();
     }
 
-    return <button onClick={handleRollDice}>Roll Dice</button>;
+    return <DefaultButton onClick={handleRollDice}>Roll Dice</DefaultButton>;
   }
 
   function EndTurnButton() {
@@ -37,12 +38,12 @@ export default function ActionButton({
     //TODO: Make it a "Pass Turn" button until the player makes a selection
     const otherPlayers = game.players.filter((p) => p.id !== player.id);
     return (
-      <button
+      <DefaultButton
         onClick={handleEndTurn}
         disabled={!otherPlayers.every((p) => p.ready)}
       >
         {madeSelection ? "End Turn" : "Pass Turn"}
-      </button>
+      </DefaultButton>
     );
   }
 
@@ -55,9 +56,9 @@ export default function ActionButton({
     }
 
     return (
-      <button onClick={handleReady} disabled={!game.diceRolled}>
+      <DefaultButton onClick={handleReady} disabled={!game.diceRolled}>
         {player.ready ? "Ready" : "Not Ready"}
-      </button>
+      </DefaultButton>
     );
   }
 

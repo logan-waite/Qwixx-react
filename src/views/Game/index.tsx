@@ -10,6 +10,7 @@ import type { BoxSelection, ScoreRow as ScoreRowType } from "@/lib/types";
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useEffectWithPrevState from "@/lib/hooks/useEffectWithPrevState";
+import View from "@/components/View";
 
 export default function GameView() {
   const navigate = useNavigate();
@@ -51,7 +52,6 @@ export default function GameView() {
             },
           });
         } else {
-          console.log("updating score");
           const updatedScoreRows = [selectedWhiteBox, selectedColorBox].reduce(
             (scoreRows, selection) => {
               if (selection) {
@@ -133,18 +133,7 @@ export default function GameView() {
   }
 
   return (
-    <main className={styles.diceWrapper}>
-      <h2>{player.name}</h2>
-      {game.players.map((p, i) => (
-        <span
-          key={i}
-          style={{
-            textDecoration: game.currentTurnIndex === i ? "underline" : "none",
-          }}
-        >
-          {p.name}&nbsp;{" "}
-        </span>
-      ))}
+    <View pageTitle={`${gameCode} Game`} header={`Qwixx Game ${gameCode}`}>
       <div className={styles.diceTray}>
         {game.diceRoll.map((die, i) => (
           <Die
@@ -163,7 +152,22 @@ export default function GameView() {
             madeSelection={!!selectedColorBox || !!selectedWhiteBox}
           ></ActionButton>
         </div>
-        Status Report
+        <div className={styles.turnDisplay}>
+          Current Turn
+          <div>
+            {game.players.map((p, i) => (
+              <span
+                key={i}
+                className={[
+                  game.currentTurnIndex === i ? styles.activePlayer : "",
+                  styles.player,
+                ].join(" ")}
+              >
+                {p.name}&nbsp;{" "}
+              </span>
+            ))}
+          </div>
+        </div>
         <div className={styles.emptyRolls}>
           <h5>Turns Passed</h5>
           <div className={styles.emptyRollMarker__wrapper}>
@@ -178,7 +182,7 @@ export default function GameView() {
         </div>
       </div>
       <div className={styles.scorecard}>
-        <div className={styles.lockboxes}>
+        <div className={styles.lockBoxes}>
           <h5>At Least 5 X's</h5>
         </div>
         <ScoreRow
@@ -222,6 +226,6 @@ export default function GameView() {
           }}
         ></ScoreRow>
       </div>
-    </main>
+    </View>
   );
 }

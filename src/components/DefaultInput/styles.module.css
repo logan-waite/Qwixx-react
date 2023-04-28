@@ -1,0 +1,10 @@
+.defaultInput {
+  font-size: 1.25em;
+  text-align: center;
+  border-style: initial;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: gray;
+  font-weight: bold;
+  min-width: 0;
+}

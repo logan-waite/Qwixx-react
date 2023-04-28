@@ -1,5 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {
+  getFirestore,
+  connectFirestoreEmulator,
+  setLogLevel,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBDOH4aj4bLXV5UnFCc_5JhOo7jNqjoH0w",
@@ -14,3 +18,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
+//TODO: only run this in DEV
+connectFirestoreEmulator(db, "localhost", 8080);

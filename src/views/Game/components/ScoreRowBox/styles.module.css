@@ -40,18 +40,18 @@
 }
 
 .scoreRow__box--red {
-  color: red;
-  background-color: lightpink;
+  color: var(--red);
+  background-color: var(--light-red);
 }
 .scoreRow__box--yellow {
-  color: gold;
-  background-color: lightyellow;
+  color: var(--yellow);
+  background-color: var(--light-yellow);
 }
 .scoreRow__box--green {
-  color: green;
-  background-color: lightgreen;
+  color: var(--green);
+  background-color: var(--light-green);
 }
 .scoreRow__box--blue {
-  color: blue;
-  background-color: lightblue;
+  color: var(--blue);
+  background-color: var(--light-blue);
 }

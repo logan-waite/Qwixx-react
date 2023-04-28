@@ -1,7 +1,8 @@
+import View from "@/components/View";
 import styles from "./style.module.css";
 import useGame from "@/lib/hooks/useGame";
 import { Score, ScoreRow } from "@/lib/types";
-import { pipe, map, sumPlus } from "@/lib/utils";
+import { pipe, map, sumPlus, createArray } from "@/lib/utils";
 import { useParams } from "react-router-dom";
 
 export default function GameEnd() {
@@ -25,48 +26,52 @@ export default function GameEnd() {
   }
 
   return (
-    <table className={styles.scoreTable}>
-      <thead>
-        <th></th>
-        <th>Red</th>
-        <th>Yellow</th>
-        <th>Green</th>
-        <th>Blue</th>
-        <th>Passed</th>
-        <th className={styles.scoreTable__totalColumn}>Total Score</th>
-      </thead>
-      {game.players.map((player) => (
+    <View pageTitle={`Score for ${gameCode}`} header="Scores">
+      <table className={styles.scoreTable}>
+        <thead>
+          <th></th>
+          <th className={styles[`scoreTable__colorColumn__header--red`]}>
+            Red
+          </th>
+          <th className={styles[`scoreTable__colorColumn__header--yellow`]}>
+            Yellow
+          </th>
+          <th className={styles[`scoreTable__colorColumn__header--green`]}>
+            Green
+          </th>
+          <th className={styles[`scoreTable__colorColumn__header--blue`]}>
+            Blue
+          </th>
+          <th>Passed</th>
+          <th className={styles.scoreTable__totalColumn}>Total Score</th>
+        </thead>
         <tr>
-          <th>{player.name}</th>
-          {player.score.scoreRows.map((sr) => (
-            <td className={styles[`scoreTable__colorColumn--${sr.color}`]}>
-              {sr.selectedNumbers.length} (
-              {calculateScorePerColor(sr.selectedNumbers)})
-            </td>
+          <td></td>
+          {createArray(5).map((_) => (
+            <td style={{ fontSize: "12px" }}>Xs (Score)</td>
           ))}
-          <td>
-            {player.score.passedTurns} ({player.score.passedTurns * -5})
-          </td>
-          <td>{calculateFinalScore(player.score)}</td>
+          <td></td>
         </tr>
-      ))}
-    </table>
+        {game.players.map((player) => (
+          <tr>
+            <th>{player.name}</th>
+            {player.score.scoreRows.map((sr) => (
+              <td
+                className={`${styles.scoreTable__colorColumn} ${
+                  styles[`scoreTable__colorColumn--${sr.color}`]
+                }`}
+              >
+                {sr.selectedNumbers.length} (
+                {calculateScorePerColor(sr.selectedNumbers)})
+              </td>
+            ))}
+            <td>
+              {player.score.passedTurns} ({player.score.passedTurns * -5})
+            </td>
+            <td>{calculateFinalScore(player.score)}</td>
+          </tr>
+        ))}
+      </table>
+    </View>
   );
-  // return (
-  //   <div>
-  //     {game.players.map((player) => (
-  //       <div>
-  //         <span>{player.name}&nbsp;</span>
-  //         {player.score.scoreRows.map((sr) => (
-  //           <span>
-  //             {sr.color} : {sr.selectedNumbers.length}
-  //             &nbsp;&nbsp;&nbsp;
-  //           </span>
-  //         ))}
-  //         <span>{player.score.passedTurns}&nbsp;&nbsp;&nbsp;</span>
-  //         <span>Total Score: </span>
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
 }

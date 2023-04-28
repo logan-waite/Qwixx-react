@@ -8,20 +8,20 @@
 
 /* red */
 .scoreRow--red {
-  background-color: red;
+  background-color: var(--red);
 }
 
 /* yellow */
 .scoreRow--yellow {
-  background-color: gold;
+  background-color: var(--yellow);
 }
 
 /* green */
 .scoreRow--green {
-  background-color: green;
+  background-color: var(--green);
 }
 
 /* blue */
 .scoreRow--blue {
-  background-color: blue;
+  background-color: var(--blue);
 }

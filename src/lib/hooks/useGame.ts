@@ -78,7 +78,10 @@ export default function useGame(gameCode?: string) {
 
   async function joinGame(gameCode: string) {
     const joinedGameRef = doc(db, "games", gameCode);
+    console.log("getting doc");
+    console.log({ joinedGameRef });
     const docSnap = await getDoc(joinedGameRef);
+    console.log("got doc");
     if (docSnap.exists()) {
       const gameData = docSnap.data();
       dispatch({

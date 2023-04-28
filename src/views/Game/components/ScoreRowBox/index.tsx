@@ -57,8 +57,7 @@ export default function ScoreRowBox({
       if (currentlySelected.white && !currentlySelected.color) {
         onSelect("color", selection);
       } else if (!currentlySelected.white && !currentlySelected.color) {
-        onSelect("color", selection);
-        onSelect("white", selection);
+        onSelect("both", selection);
       } else {
         onSelect("white", selection);
       }

@@ -1,4 +1,8 @@
-import GameContext from "@/contexts/GameContext";
+import styles from "./styles.module.css";
+import DefaultButton from "@/components/DefaultButton";
+import DefaultInput from "@/components/DefaultInput";
+import FormGroup from "@/components/FormGroup";
+import View from "@/components/View";
 import { PlayerState } from "@/contexts/PlayerContext";
 import useGame from "@/lib/hooks/useGame";
 import usePlayer from "@/lib/hooks/usePlayer";
@@ -8,7 +12,7 @@ import {
   randomNumber,
   saveToLocal,
 } from "@/lib/utils";
-import { FormEvent, useContext, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function LobbyView() {
@@ -63,30 +67,32 @@ export default function LobbyView() {
   }
 
   return (
-    <main>
+    <View pageTitle="Lobby" className={styles.lobbyView}>
       <h1>Lobby for {gameCode}</h1>
       <h2>Welcome, {player.name}</h2>
       <form onSubmit={handleNameChange}>
-        <input
-          type="text"
-          value={playerName}
-          onChange={(e) => setPlayerName(e.target.value)}
-        ></input>
-        <button type="submit">Change Name</button>
+        <FormGroup>
+          <DefaultInput
+            type="text"
+            value={playerName}
+            onChange={(e) => setPlayerName(e.target.value)}
+          ></DefaultInput>
+          <DefaultButton type="submit">Change Name</DefaultButton>
+        </FormGroup>
       </form>
-      <h3>Joined Players</h3>
-      <ul>
+      <h3 className={styles.joinedPlayerTitle}>Joined Players</h3>
+      <ul className={styles.joinedPlayerList}>
         {game.players.map((gamePlayer) => {
           return (
-            <li key={gamePlayer.id}>
-              {gamePlayer.name}: {gamePlayer.ready ? "ready" : "not ready"}
+            <li className={styles.joinedPlayerList__player} key={gamePlayer.id}>
+              {gamePlayer.name}
             </li>
           );
         })}
       </ul>
       <div>
         {player?.id === game.players[0]?.id ? (
-          <button
+          <DefaultButton
             onClick={startGame}
             disabled={
               game.players.filter((p) => p.ready).length <
@@ -94,11 +100,13 @@ export default function LobbyView() {
             }
           >
             Start Game
-          </button>
+          </DefaultButton>
         ) : (
-          <button onClick={toggleReady}>Ready</button>
+          <DefaultButton onClick={toggleReady}>
+            {player.ready ? "Ready" : "Not Ready"}
+          </DefaultButton>
         )}
       </div>
-    </main>
+    </View>
   );
 }

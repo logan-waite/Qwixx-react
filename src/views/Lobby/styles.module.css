@@ -1,0 +1,15 @@
+.lobbyView {
+  width: 500px;
+}
+
+.joinedPlayerTitle {
+  margin-bottom: 0px;
+}
+
+.joinedPlayerList {
+  list-style-type: none;
+  padding: 0;
+  font-size: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,8 @@
+.homeView {
+  max-width: 300px;
+}
+
+.joinGameInputGroup{
+  display: flex;
+  gap: 5px;
+}
