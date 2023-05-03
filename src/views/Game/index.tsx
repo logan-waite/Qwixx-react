@@ -18,7 +18,7 @@ export default function GameView() {
   document.title = `Qwixx Clone | ${gameCode} Game`;
 
   const { gameRef, game, updateGame } = useGame(gameCode);
-  const { player, addPlayer, updatePlayer } = usePlayer(gameRef);
+  const { player, updatePlayer } = usePlayer(gameRef);
 
   const [selectedWhiteBox, setSelectedWhiteBox] = useState<BoxSelection | null>(
     null
