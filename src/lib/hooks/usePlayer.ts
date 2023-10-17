@@ -74,7 +74,7 @@ export default function usePlayer(gameRef?: DocumentReference | null) {
     return initialState;
   }
 
-  async function _updatePlayer(player: Partial<PlayerState>) {
+  async function updatePlayer(player: Partial<PlayerState>) {
     try {
       if (!playerRef) {
         throw "`updatePlayer` didn't receive a playerRef!";
@@ -97,6 +97,6 @@ export default function usePlayer(gameRef?: DocumentReference | null) {
     player,
     playerRef,
     addPlayer,
-    updatePlayer: _updatePlayer,
+    updatePlayer,
   };
 }

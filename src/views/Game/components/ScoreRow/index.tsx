@@ -100,7 +100,11 @@ export default function ScoreRow({
     .includes(color);
 
   return (
-    <div className={`${styles.scoreRow} ${styles[`scoreRow--${color}`]}`}>
+    <div
+      className={`${styles.scoreRow} ${styles[`scoreRow--${color}`]} ${
+        rowLocked ? styles[`scoreRow--locked`] : ""
+      }`}
+    >
       {boxes.map((boxNumber, i) => {
         const isLockNumber = i + 1 === boxes.length; // The last box
         const numberIsFree = isLockNumber ? markedBoxes >= 5 : true;

@@ -89,6 +89,11 @@ export default function ScoreRowBox({
         <FontAwesomeIcon icon={["fas", "unlock"]} />
       )}
 
+      {/* Locked row bar */}
+      {(value === -1 || isAvailable) && rowLocked && !isScored ? (
+        <hr className={styles["scoreRow__box__lockedBar"]} />
+      ) : null}
+
       {/* Selection X */}
       {isSelected ? (
         <FontAwesomeIcon

@@ -78,10 +78,7 @@ export default function useGame(gameCode?: string) {
 
   async function joinGame(gameCode: string) {
     const joinedGameRef = doc(db, "games", gameCode);
-    console.log("getting doc");
-    console.log({ joinedGameRef });
     const docSnap = await getDoc(joinedGameRef);
-    console.log("got doc");
     if (docSnap.exists()) {
       const gameData = docSnap.data();
       dispatch({
@@ -89,6 +86,7 @@ export default function useGame(gameCode?: string) {
         payload: { ...gameData, gameRef: joinedGameRef },
       });
     } else {
+      console.error("couldn't join game; document does not exist");
       // fail state
       // redirect back? Or create a new game with the code?
     }

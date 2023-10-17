@@ -1,9 +1,14 @@
 .scoreRow {
   /* border-radius: 7px; */
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
   padding: 7px;
+}
+
+.scoreRow--locked {
+  opacity: 0.5;
 }
 
 /* red */

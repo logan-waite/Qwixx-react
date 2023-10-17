@@ -38,12 +38,10 @@ export default function GameView() {
     (previous) => {
       const [lastTurnIndex] = previous;
       const wasMyTurn = playerIndex === lastTurnIndex;
+      // only run after the component has been mounted.
       if (isMounted.current) {
         // Save the scores
-        console.log("saving score!");
-        console.log({ isMyTurn, selectedWhiteBox, selectedColorBox });
         if (wasMyTurn && !selectedWhiteBox && !selectedColorBox) {
-          console.log("passing turn");
           updatePlayer({
             ready: false,
             score: {

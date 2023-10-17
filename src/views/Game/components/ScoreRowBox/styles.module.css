@@ -39,6 +39,13 @@
   font-size: 24pt;
 }
 
+.scoreRow__box__lockedBar {
+  position: absolute;
+    width: 100%;
+    border: 2px solid #666;
+    border-radius: 4px;
+}
+
 .scoreRow__box--red {
   color: var(--red);
   background-color: var(--light-red);
