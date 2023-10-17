@@ -52,25 +52,30 @@ export default function GameEnd() {
           ))}
           <td></td>
         </tr>
-        {game.players.map((player) => (
-          <tr>
-            <th>{player.name}</th>
-            {player.score.scoreRows.map((sr) => (
-              <td
-                className={`${styles.scoreTable__colorColumn} ${
-                  styles[`scoreTable__colorColumn--${sr.color}`]
-                }`}
-              >
-                {sr.selectedNumbers.length} (
-                {calculateScorePerColor(sr.selectedNumbers)})
+        {game.players
+          .toSorted(
+            (a, b) =>
+              calculateFinalScore(b.score) - calculateFinalScore(a.score)
+          )
+          .map((player) => (
+            <tr>
+              <th>{player.name}</th>
+              {player.score.scoreRows.map((sr) => (
+                <td
+                  className={`${styles.scoreTable__colorColumn} ${
+                    styles[`scoreTable__colorColumn--${sr.color}`]
+                  }`}
+                >
+                  {sr.selectedNumbers.length} (
+                  {calculateScorePerColor(sr.selectedNumbers)})
+                </td>
+              ))}
+              <td>
+                {player.score.passedTurns} ({player.score.passedTurns * -5})
               </td>
-            ))}
-            <td>
-              {player.score.passedTurns} ({player.score.passedTurns * -5})
-            </td>
-            <td>{calculateFinalScore(player.score)}</td>
-          </tr>
-        ))}
+              <td>{calculateFinalScore(player.score)}</td>
+            </tr>
+          ))}
       </table>
     </View>
   );
